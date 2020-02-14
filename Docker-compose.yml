@@ -3,7 +3,6 @@ version: '3.3'
 services:
   mainscore:
     build:
-      context: /vagrant/Docker
       dockerfile: Dockerfile
     image: mor12324/scoreapp:latest
     volumes:
