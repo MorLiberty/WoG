@@ -4,7 +4,6 @@ node {
         git "https://github.com/MorLiberty/WoG"
     }
     stage("Build"){
-        sh label: '', script: 'sudo su -'
         sh label: '', script: 'dos2unix docker-run.sh'
         sh label: '', script: 'sh docker-run.sh'
     }
