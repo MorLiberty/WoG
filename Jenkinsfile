@@ -8,6 +8,7 @@ node {
         sh label: '', script: 'sh docker-run.sh'
     }
     stage("Test"){
+        sh label: '', script: 'cd Tests'
         sh label: '', script: 'python e2e.py'
     }
     stage("Finalize"){
@@ -15,5 +16,5 @@ node {
         sh label: '', script: 'docker login --username mor12324 --password ml14678678'
         sh label: '', script: 'docker push mor12324/scoreapp'
         sh label: '', script: 'docker logout'
-    }	
+    }
 }
