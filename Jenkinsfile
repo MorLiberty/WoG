@@ -1,4 +1,4 @@
-properties([[$class: 'JiraProjectProperty'], pipelineTriggers([pollSCM('* * * * *')])])
+properties([pipelineTriggers([pollSCM('* * * * *')])])
 node {
     stage("checkout"){
         git "https://github.com/MorLiberty/WoG"
