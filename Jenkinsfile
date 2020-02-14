@@ -4,9 +4,8 @@ node {
         git "https://github.com/MorLiberty/WoG"
     }
     stage("Build"){
-        sh label: '', script: 'locate run-docker.sh'
-        sh label: '', script: 'dos2unix run-docker.sh'
-        sh label: '', script: 'sh run-docker.sh'
+        sh label: '', script: 'dos2unix docker-run.sh'
+        sh label: '', script: 'sh docker-run.sh'
     }
     stage("Test"){
         sh label: '', script: 'python Test/e2e.py'
