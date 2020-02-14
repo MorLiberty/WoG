@@ -8,7 +8,6 @@ node {
         sh label: '', script: 'sh docker-run.sh'
     }
     stage("Test"){
-        sh label: '', script: 'cd Tests'
         sh label: '', script: 'python e2e.py'
     }
     stage("Finalize"){
