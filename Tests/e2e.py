@@ -34,11 +34,9 @@ def run_test():
         print("Test finished successfully")
         return "Code", test_app
     elif test_app == -1:
-        print("OS exit code {}".format(test_app))
-        return "Code", test_app
+        raise ValueError("OS exit code {}".format(test_app))
     else:
-        print("Something went wrong")
-        return "Code", test_app
+        raise ValueError("OS exit code {}".format(test_app))
 
 
 run_test()
