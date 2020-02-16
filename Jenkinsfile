@@ -1,5 +1,4 @@
 properties([pipelineTriggers([pollSCM('* * * * *')])])
-def status = sh label: '', script: 'python Tests/e2e.py'
 node {
     stage("Checkout"){
         git "https://github.com/MorLiberty/WoG"
