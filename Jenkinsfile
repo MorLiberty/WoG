@@ -10,7 +10,7 @@ node {
     }
     stage("Test"){
         def testSuccess = sh label: '', script: 'python Tests/e2e.py'
-        if (testSuccess = checkErr) {
+        if (testSuccess == checkErr) {
             currentBuild.result = 'FAILURE'
         } else {
             currentBuild.result = 'SUCCESS'
