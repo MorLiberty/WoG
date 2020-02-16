@@ -1,5 +1,5 @@
 properties([pipelineTriggers([pollSCM('* * * * *')])])
-def checkErr = "Code -1"
+def checkErr = "OS exit code -1"
 node {
     stage("Checkout"){
         git "https://github.com/MorLiberty/WoG"

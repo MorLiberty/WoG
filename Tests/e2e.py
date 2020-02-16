@@ -35,7 +35,6 @@ def run_test():
         return "Code", test_app
     elif test_app == -1:
         print("OS exit code {}".format(test_app))
-        print("Test has failed")
         return "Code", test_app
     else:
         print("Something went wrong")
