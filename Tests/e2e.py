@@ -9,7 +9,7 @@ chrome_options.add_argument('--disable-dev-shm-usage')
 def test_score_service(url, driver):
     driver.get(url)
     score = list(driver.find_element_by_id("score").text.split())[-1]
-    if 1 >= int(score) >= 1000:
+    if 1 <= int(score) <= 1000:
         return True
     else:
         return False
