@@ -9,7 +9,7 @@ chrome_options.add_argument('--disable-dev-shm-usage')
 def test_score_service(url, driver):
     driver.get(url)
     score = list(driver.find_element_by_id("score").text.split())[-1]
-    if 1 <= int(score) <= 1000:
+    if 1 >= int(score) >= 1000:
         return True
     else:
         return False
@@ -28,11 +28,18 @@ def main_function():
         return -1
 
 
-test_app = main_function()
-if test_app == 0:
-    print("Test finished successfully")
-elif test_app == -1:
-    print("OS exit code {}".format(test_app))
-    print("Test has failed")
-else:
-    print("Something went wrong")
+def run_test():
+    test_app = main_function()
+    if test_app == 0:
+        print("Test finished successfully")
+        return False
+    elif test_app == -1:
+        print("OS exit code {}".format(test_app))
+        print("Test has failed")
+        return True
+    else:
+        print("Something went wrong")
+        return True
+
+
+run_test()

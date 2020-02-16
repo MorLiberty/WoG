@@ -1,5 +1,4 @@
 properties([pipelineTriggers([pollSCM('* * * * *')])])
-$test = sh label: '', script: 'python Tests/e2e.py'
 node {
     stage("Checkout"){
         git "https://github.com/MorLiberty/WoG"
@@ -9,7 +8,7 @@ node {
         sh label: '', script: 'sh docker-run.sh'
     }
     stage("Test"){
-        sh label: '', script: 'python Tests/e2e.py'
+        sh label: '', script: 'python Tests/e2e.py', returnStatus:true
     }
     stage("Finalize"){
         sh label: '', script: 'sudo docker stop wog_mainscore_1'
