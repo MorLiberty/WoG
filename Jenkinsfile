@@ -9,9 +9,11 @@ node {
         sh label: '', script: 'sh docker-run.sh'
     }
     stage("Test"){
-        testSuccess = sh label: '', script: 'python Tests/e2e.py',
+        def testSuccess = sh label: '', script: 'python Tests/e2e.py'
         if (testSuccess = checkErr) {
             currentBuild.result = 'FAILURE'
+        } else {
+            currentBuild.result = 'SUCCESS'
         }
     }
     stage("Finalize"){
