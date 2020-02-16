@@ -9,10 +9,11 @@ node {
     }
     stage("Test"){
         try {
-            sh label: '', script: 'python Tests/e2e.py',returnStatus: true
+            sh label: '', script: 'python Tests/e2e.py'
             currentBuild.result = 'SUCCESS'
-        } catch(error) {
+        } catch(Exception ValueError) {
             currentBuild.result = 'FAILURE'
+            sh "exit 1"
         }
     }
     stage("Finalize"){
