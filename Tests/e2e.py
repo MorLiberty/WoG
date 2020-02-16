@@ -32,14 +32,14 @@ def run_test():
     test_app = main_function()
     if test_app == 0:
         print("Test finished successfully")
-        return test_app
+        return "Code", test_app
     elif test_app == -1:
         print("OS exit code {}".format(test_app))
         print("Test has failed")
-        return test_app
+        return "Code", test_app
     else:
         print("Something went wrong")
-        return test_app
+        return "Code", test_app
 
 
 run_test()

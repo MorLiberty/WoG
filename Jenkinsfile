@@ -1,4 +1,5 @@
 properties([pipelineTriggers([pollSCM('* * * * *')])])
+def checkErr = "Code -1"
 node {
     stage("Checkout"){
         git "https://github.com/MorLiberty/WoG"
@@ -8,9 +9,9 @@ node {
         sh label: '', script: 'sh docker-run.sh'
     }
     stage("Test"){
-        sh label: '', script: 'python Tests/e2e.py'
-        if (!prev.isSuccessful()) {
-            System.exit(1)
+        testSuccess = sh label: '', script: 'python Tests/e2e.py',
+        if (testSuccess = checkErr) {
+            currentBuild.result = 'FAILURE'
         }
     }
     stage("Finalize"){
