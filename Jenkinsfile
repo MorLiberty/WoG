@@ -11,7 +11,7 @@ node {
         try {
             sh label: '', script: 'python Tests/e2e.py'
             currentBuild.result = 'SUCCESS'
-        } catch(Exception e) {
+        } catch(Exception ValueError) {
             currentBuild.result = 'FAILURE'
         }
     }
