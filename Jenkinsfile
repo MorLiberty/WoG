@@ -1,6 +1,7 @@
 properties([pipelineTriggers([pollSCM('* * * * *')])])
+$test = sh label: '', script: 'python Tests/e2e.py'
 node {
-    stage("checkout"){
+    stage("Checkout"){
         git "https://github.com/MorLiberty/WoG"
     }
     stage("Build"){
