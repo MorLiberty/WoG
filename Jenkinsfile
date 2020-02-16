@@ -1,4 +1,5 @@
 properties([pipelineTriggers([pollSCM('* * * * *')])])
+def status = sh(returnStatus: true, script: 'python Tests/e2e.py')
 node {
     stage("Checkout"){
         git "https://github.com/MorLiberty/WoG"
@@ -8,7 +9,9 @@ node {
         sh label: '', script: 'sh docker-run.sh'
     }
     stage("Test"){
-        sh label: '', script: 'python Tests/e2e.py', returnStatus:true
+        if (status != 0) {
+           currentBuild.result = 'FAILED'
+        }
     }
     stage("Finalize"){
         sh label: '', script: 'sudo docker stop wog_mainscore_1'
